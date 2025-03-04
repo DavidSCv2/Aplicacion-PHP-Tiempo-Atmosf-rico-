@@ -122,6 +122,9 @@ El documento también maneja errores en caso de que la API no responda o la ciud
   - **Opciones de visualización**: Se establece el comportamiento del gráfico, incluyendo el título, las etiquetas de los ejes X e Y, y la disposición de los ejes.
 
   ### Configuración del weekly
+  
+  Este archivo weekly.php utiliza una combinación de PHP, JavaScript y la librería Chart.js para mostrar una previsión meteorológica semanal en formato gráfico. El código está estructurado en diferentes bloques para gestionar la obtención de 
+  datos, su preparación y la visualización del gráfico, así como los iconos representativos del clima.
   ![html](https://github.com/user-attachments/assets/b4470970-2954-46ad-a180-b4bdff4a48ba)
   - **Título de la página**: El título de la página es "Previsión Semanal".
   - **Librerías externas**:
@@ -147,6 +150,25 @@ El documento también maneja errores en caso de que la API no responda o la ciud
     - **Temperaturas**: Se almacenan las temperaturas mínimas y máximas de cada día.
     - **Precipitación**: Se almacenan las cantidades de precipitación diaria.
     - **Iconos**: Se almacenan los iconos del clima para cada día.
+   
+  ![script1](https://github.com/user-attachments/assets/0d0fed03-025a-4d50-9654-53a29df64300)
+  ![script2](https://github.com/user-attachments/assets/fa009913-1980-4d39-a3c3-f142215df134)
+  - **Convertir datos PHP a JavaScript**: Los datos generados en PHP se convierten a formato JavaScript utilizando `json_encode`.
+  - **Configuración del gráfico**:
+    - Se crea un gráfico de barras utilizando `Chart.js`, donde:
+       - Las temperaturas mínimas y máximas se representan como barras.
+       - La precipitación se muestra como una línea.
+  - Se configuran las etiquetas de los ejes, el título y la disposición de las escalas (eje Y para temperaturas a la izquierda, y eje Y para lluvia a la derecha).
+
+  ![estilo](https://github.com/user-attachments/assets/844d51d1-9085-4df8-960c-a4a97b3b4233)
+  - Se definen los estilos para los iconos del clima que se mostrarán en la página.
+  - Se utiliza un contenedor con `display: flex` para alinear los iconos de forma horizontal y se les asigna un tamaño de 50x50 píxeles.
+
+
+
+
+
+
 
 
 
