@@ -216,7 +216,42 @@ Las IPs elásticas son direcciones IP estáticas asociadas a tu cuenta de AWS, l
 Una vez que hayas completado estos pasos, podrás acceder a tu instancia EC2 mediante SSH (si estás utilizando Linux/macOS, o utilizando un cliente SSH en Windows):
 ```console
 ssh -i /path/to/your-key.pem ec2-user@your-elastic-ip
-console```
+```
+Aquí, `/path/to/your-key.pem` es la ruta donde guardaste tu archivo de clave privada, y `your-elastic-ip` es la dirección IP elástica asignada a tu instancia EC2.
+Si configuraste correctamente el grupo de seguridad y el acceso SSH, deberías poder acceder a tu instancia EC2 de forma segura.
+
+**5. Configurar máquina**
+
+Dentro de la máquina tendremos que instalar **Apache** junto con los módulos **php** necesarios.
+```console
+sudo apt install -y apache2 php libapache2-mod-php php-cli php-mysql php-gd php-curl php-mbstring php-xml
+```
+Tras la instalación, crearemos y la estructura anteriormente descrita en el directorio `/var/www/html`
+![estructura en maquina ](https://github.com/user-attachments/assets/82e24942-3cd9-4797-a07e-087bb66d52fd)
+Por último, tendremos que modificar el fichero `000-default.conf` situado en `/etc/apache2/sites-available` y cambiar la ruta del document root a la carpeta donde está nuestro `index.php`. Recomendable cambiar 000-default.conf poerque al crear y habilitar un sitio nuevo puede dar conflictos con el css.
+![000-default](https://github.com/user-attachments/assets/d3c78181-d021-4ad8-afb4-03f19dc32ce0)
+Reiniciamos el serrvicio de **Apache**
+```console
+sudo systemctl restart apache2
+```
+
+**6. Verificación**
+
+Para verificar que nuestra página está en funcionamiento, tendremos que poner el nombre de nuestro dominio si tenemos uno asignado a nuestra ip elástica o la ip pública que tenga en el momento nuestra instancia.
+Tendremos acceso a la página principal desde la que podremos ir a las demás y volver de estas a la principal.
+![pagina 1](https://github.com/user-attachments/assets/2dd3e451-b3fc-4792-ba61-8412c1c8b5b3)
+![pagina 2](https://github.com/user-attachments/assets/a638219b-9f51-46a1-ba56-480acb5a899d)
+![prevision semanal](https://github.com/user-attachments/assets/6234b19b-ab54-4e3b-adc5-ad7bd3faec3c)
+En caso de que no encuentre la ciudad nos sladrá un error.
+![ciudad no encontrada](https://github.com/user-attachments/assets/0ea59561-31ed-4620-8a38-689f7958f6d2)
+
+## Conclusión
+En este proyecto se desarrolló una aplicación en PHP que permite visualizar el tiempo actual, tanto para el día como para la semana, utilizando gráficos interactivos y datos en tiempo real proporcionados por la API de OpenWeather. La estructura principal del sistema consiste en un archivo index.php que obtiene la información meteorológica de una ciudad especificada por el usuario. A partir de esta información, el usuario puede acceder a dos vistas diferenciadas: una para el clima del día y otra para el clima de la semana.
+
+La implementación de gráficos, que permiten un análisis visual de los datos, mejora la experiencia del usuario al ofrecer una forma clara y dinámica de entender las variaciones del clima a lo largo del día y la semana. El proyecto se encuentra desplegado en una instancia de Ubuntu en AWS EC2, lo que asegura alta disponibilidad y accesibilidad global a través de un dominio asociado a una dirección IP elástica.
+
+Este proyecto no solo permite el acceso rápido a información meteorológica precisa y actualizada, sino que también demuestra la integración eficaz de APIs externas, el uso de gráficos interactivos en PHP, y el despliegue en la nube, proporcionando una solución robusta y escalable para la consulta de pronósticos del tiempo. La elección de AWS EC2 como plataforma de hosting garantiza que la aplicación pueda manejar tráfico variable sin comprometer el rendimiento, mientras que la integración con OpenWeather permite acceder a datos precisos y actualizados constantemente.
+
 
 
 
