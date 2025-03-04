@@ -6,14 +6,13 @@
 2. [Requisitos Previos](#requisitos-previos)  
 3. [Infraestructura y Direccionamiento IP](#infraestructura-y-direccionamiento-ip)
 4. [Estructura](#estructura)  
-5. [Vagrantfile](#vagrantfile) 
-6. [Instalación y Configuración](#instalación-y-configuración)
+5. [Configuración](#configuración)
     - [Configuración del Balanceador de Carga](#configuración-del-balanceador-de-carga)  
     - [Configuración del Servidor de Base de Datos](#configuración-del-servidor-de-base-de-datos)  
     - [Configuración del Servidor NFS](#configuración-del-servidor-nfs)  
     - [Configuración de los Servidores Web](#configuración-de-los-servidores-web)
-7. [Despliegue](#despliegue)  
-8. [Conclusión](#conclusión)
+6. [Despliegue](#despliegue)  
+7. [Conclusión](#conclusión)
 
 
 ## Introducción
@@ -34,4 +33,17 @@ Para ejecutar esta aplicación, necesitarás:
 - Se requiere modificar la configuración de **Apache** para servir la carpeta correctamente.
 
 ## Estructura
+├── /tiempo      
 
+  ├── index.php              # Página principal encargada de permitir consultar a los usuarios  el clima de una ciudad específica.
+
+  ├── hourly.php              # Muestra la previsión del clima en la ciudad especificada.
+
+  ├── weekly.php              # Muestra la previsión meteorológica semanal para la ciudad especificada.
+
+  ├── /css              
+
+  ├── styles.css              # Define los estilos visuales del proyecto.
+
+  ## Configuración
+             
