@@ -48,6 +48,16 @@ Para ejecutar esta aplicación, necesitarás:
   ## Configuración
 
   ### Configuración del index
+  ![head](https://github.com/user-attachments/assets/085fb026-53e6-4a52-b93a-2a7cc09d266b) 
   
+  Define el documento HTML con la etiqueta <!DOCTYPE html>.
+  - Especifica que el idioma es español con lang="es".
+
+  - Usa meta charset="UTF-8" para permitir caracteres especiales (acentos, ñ, etc.).
+
+  - Establece el título del sitio como "Información del Tiempo".
+
+  - Enlaza un archivo CSS (styles.css) para aplicar estilos a la página.
+
   
              
