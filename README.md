@@ -7,7 +7,7 @@
 3. [Infraestructura y Direccionamiento IP](#infraestructura-y-direccionamiento-ip)
 4. [Estructura](#estructura)  
 5. [Configuración](#configuración)
-    - [Configuración del Balanceador de Carga](#configuración-del-balanceador-de-carga)  
+    - [Configuración del index](#configuración-del-index)  
     - [Configuración del Servidor de Base de Datos](#configuración-del-servidor-de-base-de-datos)  
     - [Configuración del Servidor NFS](#configuración-del-servidor-nfs)  
     - [Configuración de los Servidores Web](#configuración-de-los-servidores-web)
@@ -46,4 +46,8 @@ Para ejecutar esta aplicación, necesitarás:
   ├── styles.css              # Define los estilos visuales del proyecto.
 
   ## Configuración
+
+  ### Configuración del index
+  
+  
              
