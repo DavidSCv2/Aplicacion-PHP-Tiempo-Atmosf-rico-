@@ -10,7 +10,7 @@
     - [Configuración del index](#configuración-del-index)  
     - [Configuración del hourly](#configuración-del-hourly)  
     - [Configuración del weekly](#configuración-del-weekly)  
-    - [Configuración de los Servidores Web](#configuración-de-los-servidores-web)
+    - [Configuración del css](#configuración-del-css)
 6. [Despliegue](#despliegue)  
 7. [Conclusión](#conclusión)
 
@@ -163,6 +163,39 @@ El documento también maneja errores en caso de que la API no responda o la ciud
   ![estilo](https://github.com/user-attachments/assets/844d51d1-9085-4df8-960c-a4a97b3b4233)
   - Se definen los estilos para los iconos del clima que se mostrarán en la página.
   - Se utiliza un contenedor con `display: flex` para alinear los iconos de forma horizontal y se les asigna un tamaño de 50x50 píxeles.
+
+ ### Configuración del css
+ Este CSS define estilos visuales para una página de clima, asegurando una presentación clara y moderna. En el `body`, se establece una fuente legible y un fondo gris claro con un diseño centrado usando **flexbox**. El título (`h1`) tiene un 
+ color azul oscuro y un tamaño grande, destacándose sobre el contenido. El formulario de búsqueda tiene un fondo blanco, bordes redondeados, y una sombra suave, con botones de búsqueda azules que cambian de tono al pasar el cursor. Los bloques 
+ de información del clima actual y de previsión tienen un fondo blanco, bordes redondeados y sombras para darles profundidad visual, además de utilizar colores específicos como verde para los enlaces y azul para las horas. La previsión diaria 
+ se presenta en una lista con detalles alineados de forma **flex** (hora, temperatura y descripción), y el último ítem no tiene borde inferior. Los mensajes de error se muestran en rojo para destacarse, mientras que los enlaces de navegación 
+ tienen un fondo azul que cambia a un tono más oscuro cuando se pasa el cursor. Finalmente, los iconos del clima se alinean horizontalmente con un tamaño fijo de 50px para garantizar que sean fácilmente visibles. El diseño utiliza márgenes y 
+ espaciados adecuados para una presentación limpia y centrada en la experiencia del usuario.
+
+ ## Despliegue
+El proceso de despliegue de la aplicación se realizará en una máquina EC2 (Elastic Compute Cloud) de AWS que incluye varios pasos. A continuación te explico cómo crear una máquina EC2, configurar grupos de seguridad para SSH y HTTP, y asignarle una IP elástica.
+
+**1. Crear una máquina EC2 (Instancia)**
+- **Accede a AWS Management Console**: Ingresa a tu cuenta de AWS y accede a la consola de administración.
+- **Selecciona EC2**: En el panel de servicios, selecciona "EC2" bajo la categoría "Compute".
+- **Lanza una nueva instancia**: Haz clic en “Launch Instance” para crear una nueva máquina virtual EC2.
+- **Selecciona una AMI (Amazon Machine Image)**: AWS ofrece varias imágenes preconfiguradas. Elige una AMI adecuada para tu aplicación (para este proyecto se ha usado Ubuntu).
+- **Elige un tipo de instancia**: Selecciona el tipo de instancia según los requisitos de tu aplicación (por ejemplo, `t2.micro` para pruebas o una instancia más potente si es necesario).
+- **Configura la clave SSH**: Es importante que crees o selecciones un par de claves SSH para poder acceder a tu instancia de manera remota. Si no tienes uno, selecciona "Create a new key pair", descárgalo y guárdalo de forma segura.
+![instancia 1](https://github.com/user-attachments/assets/90545918-0342-4d47-ae13-285c3f360cd6)
+![instancia 2](https://github.com/user-attachments/assets/bb1e508d-f9dd-400c-a290-fee6793292e2)
+
+**2. Configurar Grupos de Seguridad**
+Los grupos de seguridad actúan como un firewall virtual que controla el tráfico entrante y saliente de tu instancia EC2. Vamos a configurar los grupos de seguridad para permitir el acceso SSH y HTTP.
+- Accede a los Grupos de Seguridad: Durante el proceso de creación de la instancia EC2, se te pedirá configurar los grupos de seguridad. Si ya tienes un grupo de seguridad, puedes asignarlo; si no, crea uno nuevo.
+  
+**Configura las reglas de acceso:**
+- **SSH (Puerto 22)**: Permite el acceso remoto a tu instancia EC2 mediante SSH. Añade una regla para el puerto 22:
+ - **Tipo**: SSH
+ - **Protocolo**: TCP
+ - **Puerto**: 22
+
+
 
 
 
