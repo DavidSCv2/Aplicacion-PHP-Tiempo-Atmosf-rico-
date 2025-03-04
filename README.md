@@ -186,14 +186,40 @@ El proceso de despliegue de la aplicación se realizará en una máquina EC2 (El
 ![instancia 2](https://github.com/user-attachments/assets/bb1e508d-f9dd-400c-a290-fee6793292e2)
 
 **2. Configurar Grupos de Seguridad**
+
 Los grupos de seguridad actúan como un firewall virtual que controla el tráfico entrante y saliente de tu instancia EC2. Vamos a configurar los grupos de seguridad para permitir el acceso SSH y HTTP.
-- Accede a los Grupos de Seguridad: Durante el proceso de creación de la instancia EC2, se te pedirá configurar los grupos de seguridad. Si ya tienes un grupo de seguridad, puedes asignarlo; si no, crea uno nuevo.
+- **Accede a los Grupos de Seguridad**: Durante el proceso de creación de la instancia EC2, se te pedirá configurar los grupos de seguridad. Si ya tienes un grupo de seguridad, puedes asignarlo; si no, crea uno nuevo.
   
 **Configura las reglas de acceso:**
 - **SSH (Puerto 22)**: Permite el acceso remoto a tu instancia EC2 mediante SSH. Añade una regla para el puerto 22:
  - **Tipo**: SSH
  - **Protocolo**: TCP
  - **Puerto**: 22
+
+- **HTTP (Puerto 80)**: Para acceder a tu aplicación web (si está corriendo un servidor HTTP como Apache o Nginx), debes habilitar el puerto 80:
+ - **Tipo**: HTTP
+ - **Protocolo**: TCP
+ - **Puerto**: 80
+![grupo seguridad](https://github.com/user-attachments/assets/611a11ef-f748-4fd3-9ba0-936aaad4f83f)
+
+**3. Asignar una IP Elástica**
+
+Las IPs elásticas son direcciones IP estáticas asociadas a tu cuenta de AWS, lo que garantiza que la dirección IP de tu servidor no cambiará incluso si la instancia EC2 se detiene y reinicia. Aquí están los pasos para asignar una IP elástica:
+
+- **Accede a la sección de IP Elásticas**: En la consola de AWS, selecciona "Elastic IPs" en la barra lateral de EC2.
+- **Asigna una nueva IP Elástica**: Haz clic en “Allocate new address” para crear una nueva IP elástica. Elige la región en la que se encuentra tu instancia EC2.
+- **Asocia la IP Elástica a tu Instancia EC2**: Una vez que la IP elástica sea asignada, selecciona “Actions” y luego “Associate address”.
+- **Selecciona la Instancia**: En el campo "Instance", selecciona la instancia EC2 a la que deseas asociar la IP elástica y haz clic en "Associate".
+
+**4. Acceso a tu instacia**
+
+Una vez que hayas completado estos pasos, podrás acceder a tu instancia EC2 mediante SSH (si estás utilizando Linux/macOS, o utilizando un cliente SSH en Windows):
+```console
+ssh -i /path/to/your-key.pem ec2-user@your-elastic-ip
+console```
+
+
+
 
 
 
