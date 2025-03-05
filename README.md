@@ -228,8 +228,10 @@ sudo apt install -y apache2 php libapache2-mod-php php-cli php-mysql php-gd php-
 ```
 Tras la instalación, crearemos y la estructura anteriormente descrita en el directorio `/var/www/html`
 ![estructura en maquina ](https://github.com/user-attachments/assets/82e24942-3cd9-4797-a07e-087bb66d52fd)
+
 Por último, tendremos que modificar el fichero `000-default.conf` situado en `/etc/apache2/sites-available` y cambiar la ruta del document root a la carpeta donde está nuestro `index.php`. Recomendable cambiar 000-default.conf poerque al crear y habilitar un sitio nuevo puede dar conflictos con el css.
 ![000-default](https://github.com/user-attachments/assets/d3c78181-d021-4ad8-afb4-03f19dc32ce0)
+
 Reiniciamos el serrvicio de **Apache**
 ```console
 sudo systemctl restart apache2
