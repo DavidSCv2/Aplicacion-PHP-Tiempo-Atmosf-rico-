@@ -25,7 +25,23 @@
     </style>
 </head>
 <body>
-    <h1>Previsión por Horas</h1>
+    <?php
+    session_start(); // Iniciar sesión para acceder a los datos guardados
+    
+    // Verificar si existen los datos de latitud y longitud en la sesión
+    if (!isset($_SESSION['lat']) || !isset($_SESSION['lon'])) {
+        echo "<p class='error'>No se ha seleccionado ninguna ciudad. Por favor, vuelve al inicio y selecciona una ciudad.</p>";
+        echo "<a href='index.php' class='btn'>Volver al Inicio</a>";
+        exit;
+    }
+    
+    // Obtener la información de la ciudad desde la sesión
+    $lat = $_SESSION['lat'];
+    $lon = $_SESSION['lon'];
+    $cityName = isset($_SESSION['city_name']) ? $_SESSION['city_name'] : "tu ubicación";
+    ?>
+
+    <h1>Previsión por Horas para <?php echo $cityName; ?></h1>
 
     <!-- Contenedor del gráfico -->
     <div class="forecast-container">
@@ -34,15 +50,11 @@
     </div>
 
     <!-- Botón para volver a la página principal -->
-    <a href="weather.php" class="btn">Inicio</a>
+    <a href="index.php" class="btn">Inicio</a>
 
     <?php
-    // Clave API para OpenWeatherMap (reemplázala con la tuya)
-    $apiKey = '';
-    
-    // Obtener los parámetros de latitud y longitud enviados por GET
-    $lat = $_GET['lat'];
-    $lon = $_GET['lon'];
+    // Clave API para OpenWeatherMap
+    $apiKey = '544a4030985e7b50b46df6db73bb2bba';
 
     // Construcción de la URL para obtener la previsión meteorológica por horas
     $hourlyUrl = "https://api.openweathermap.org/data/2.5/forecast?lat={$lat}&lon={$lon}&appid={$apiKey}&units=metric&lang=es";
