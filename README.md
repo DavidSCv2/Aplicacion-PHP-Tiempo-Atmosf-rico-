@@ -68,6 +68,15 @@ El documento también maneja errores en caso de que la API no responda o la ciud
   - Contiene un **campo de texto** (`<input type="text">`) para ingresar la ciudad.
   - Se incluye un botón **"Buscar"** para enviar el formulario.
 
+  ![session index](https://github.com/user-attachments/assets/39065ad4-1cf2-4d18-9dd9-578ca66d6142)
+  - **session_start();**: Inicia la sesión para acceder a los datos guardados previamente.
+  - **Verificación de datos en la sesión**: Comprueba si las variables lat y lon existen en $_SESSION.
+    - Si no existen, se muestra un mensaje de error y se ofrece un botón para volver a la página de inicio.
+    - La ejecución del script se detiene con `exit;`.
+  - **Recuperación de los datos de la sesión**:
+    - Se asignan las variables `$lat` y `$lon` a los valores guardados en `$_SESSION`.
+    - Si `city_name` no está definido, se usa "tu ubicación" como valor predeterminado.
+
   ![isset](https://github.com/user-attachments/assets/d67408b5-0b03-4d76-86c3-4c2421786db3)
   - **Verifica si se ha enviado una ciudad** (`isset($_GET['city'])`).
   - Define la **clave API** de OpenWeatherMap para acceder a los datos.
@@ -108,8 +117,19 @@ El documento también maneja errores en caso de que la API no responda o la ciud
   - **Chart.js**: Se incluye la librería externa `Chart.js`, que es utilizada para dibujar gráficos interactivos en el navegador.
   - **Estilos CSS**: Se definen los estilos para un botón de inicio (`<a>`), que redirige al usuario a otra página de la aplicación.
 
-  ![php](https://github.com/user-attachments/assets/9512d64e-0be2-4e26-97a5-24b7f04156e6)
-  - **Obtención de parámetros de latitud y longitud**: Se reciben los parámetros `lat` y `lon` mediante `$_GET` para saber la ubicación geográfica de la cual obtener los datos meteorológicos.
+  ![hourly session](https://github.com/user-attachments/assets/20d26261-2091-4bd0-8ad5-4e39f3cb74df)
+   - **session_start();**: Inicia la sesión para acceder a los datos guardados previamente.
+  - **Verificación de datos en la sesión**: Comprueba si las variables lat y lon existen en $_SESSION.
+    - Si no existen, se muestra un mensaje de error y se ofrece un botón para volver a la página de inicio.
+    - La ejecución del script se detiene con `exit;`.
+  - **Recuperación de los datos de la sesión**:
+    - Se asignan las variables `$lat` y `$lon` a los valores guardados en `$_SESSION`.
+    - Si `city_name` no está definido, se usa "tu ubicación" como valor predeterminado.
+  - **Visualización de la previsión meteorológica**:
+    - Se muestra un título con el nombre de la ciudad.
+    - Se crea un contenedor con un elemento `<canvas>` donde se representará el gráfico de temperatura y lluvia.
+    
+  ![php api](https://github.com/user-attachments/assets/7f8f8781-60f5-4c06-8103-d5c694a175ea)
   - **Llamada a la API de OpenWeatherMap**: Se construye una URL que consulta la API de OpenWeatherMap para obtener la previsión del tiempo por horas, utilizando la clave API y los parámetros de latitud y longitud proporcionados. La respuesta 
     de la API se obtiene con `file_get_contents`.
   - **Procesamiento de la respuesta JSON**: La respuesta se decodifica de formato JSON a un array asociativo de PHP. Luego, se extraen los datos de cada hora (temperatura y lluvia) y se almacenan en los arrays `$labels`, `$temperatures`, y 
@@ -243,7 +263,7 @@ Para verificar que nuestra página está en funcionamiento, tendremos que poner 
 Tendremos acceso a la página principal desde la que podremos ir a las demás y volver de estas a la principal.
 ![pagina 1](https://github.com/user-attachments/assets/2dd3e451-b3fc-4792-ba61-8412c1c8b5b3)
 ![pagina 2](https://github.com/user-attachments/assets/a638219b-9f51-46a1-ba56-480acb5a899d)
-![prevision semanal](https://github.com/user-attachments/assets/6234b19b-ab54-4e3b-adc5-ad7bd3faec3c)
+![prevision semanal](https://github.com/user-attachments/assets/14d11fcc-27e3-46ba-a976-45d904837e76)
 En caso de que no encuentre la ciudad nos sladrá un error.
 ![ciudad no encontrada](https://github.com/user-attachments/assets/0ea59561-31ed-4620-8a38-689f7958f6d2)
 
@@ -253,25 +273,3 @@ En este proyecto se desarrolló una aplicación en PHP que permite visualizar el
 La implementación de gráficos, que permiten un análisis visual de los datos, mejora la experiencia del usuario al ofrecer una forma clara y dinámica de entender las variaciones del clima a lo largo del día y la semana. El proyecto se encuentra desplegado en una instancia de Ubuntu en AWS EC2, lo que asegura alta disponibilidad y accesibilidad global a través de un dominio asociado a una dirección IP elástica.
 
 Este proyecto no solo permite el acceso rápido a información meteorológica precisa y actualizada, sino que también demuestra la integración eficaz de APIs externas, el uso de gráficos interactivos en PHP, y el despliegue en la nube, proporcionando una solución robusta y escalable para la consulta de pronósticos del tiempo. La elección de AWS EC2 como plataforma de hosting garantiza que la aplicación pueda manejar tráfico variable sin comprometer el rendimiento, mientras que la integración con OpenWeather permite acceder a datos precisos y actualizados constantemente.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-             
