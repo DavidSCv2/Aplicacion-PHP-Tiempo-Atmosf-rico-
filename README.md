@@ -152,8 +152,19 @@ El documento también maneja errores en caso de que la API no responda o la ciud
     - Se carga la librería `Chart.js` desde un CDN para crear el gráfico.
   - **Botón de inicio**: Un botón que redirige al usuario a la página principal (`weather.php`).
   - **Gráfico de previsión**: Un <`canvas`> donde se dibujará el gráfico de temperaturas y lluvia semanal.
-   
-  ![php1](https://github.com/user-attachments/assets/c09c8c50-9147-4ab8-bde3-e6df99e564fa)
+  ![session weekly](https://github.com/user-attachments/assets/93ddc7d7-679d-4813-b5a1-8f7d8fcf9b3c)
+  - **session_start();**: Inicia la sesión para acceder a los datos guardados previamente.
+  - **Verificación de datos en la sesión**: Comprueba si las variables lat y lon existen en $_SESSION.
+    - Si no existen, se muestra un mensaje de error y se ofrece un botón para volver a la página de inicio.
+    - La ejecución del script se detiene con `exit;`.
+  - **Recuperación de los datos de la sesión**:
+    - Se asignan las variables `$lat` y `$lon` a los valores guardados en `$_SESSION`.
+    - Si `city_name` no está definido, se usa "tu ubicación" como valor predeterminado.
+  - **Visualización de la previsión meteorológica**:
+    - Se muestra un título con el nombre de la ciudad.
+    - Se crea un contenedor con un elemento `<canvas>` donde se representará el gráfico de temperatura y lluvia.
+    
+  ![php api](https://github.com/user-attachments/assets/43e82c26-0aeb-4cc2-abaf-1380c2ea68f4)
   ![php2](https://github.com/user-attachments/assets/4cd46d5f-13f2-4fdf-9068-4e6f0d13d42d)
   - **API OpenWeatherMap**:
     - Se define la clave API para acceder a OpenWeatherMap.
@@ -171,7 +182,7 @@ El documento también maneja errores en caso de que la API no responda o la ciud
     - **Precipitación**: Se almacenan las cantidades de precipitación diaria.
     - **Iconos**: Se almacenan los iconos del clima para cada día.
    
-  ![script1](https://github.com/user-attachments/assets/0d0fed03-025a-4d50-9654-53a29df64300)
+  ![script1](https://github.com/user-attachments/assets/c77b9bd6-bde9-46d0-a188-314d6793d387)
   ![script2](https://github.com/user-attachments/assets/fa009913-1980-4d39-a3c3-f142215df134)
   - **Convertir datos PHP a JavaScript**: Los datos generados en PHP se convierten a formato JavaScript utilizando `json_encode`.
   - **Configuración del gráfico**:
@@ -262,6 +273,7 @@ sudo systemctl restart apache2
 Para verificar que nuestra página está en funcionamiento, tendremos que poner el nombre de nuestro dominio si tenemos uno asignado a nuestra ip elástica o la ip pública que tenga en el momento nuestra instancia.
 Tendremos acceso a la página principal desde la que podremos ir a las demás y volver de estas a la principal.
 ![pagina 1](https://github.com/user-attachments/assets/2dd3e451-b3fc-4792-ba61-8412c1c8b5b3)
+Al tener una sesión, cuando vayamos a la previsión diaría y a la previsión semanal, al volver, seguiremos teniendo la información de la última ciudad buscada pudiendo cambiar así de páginas y poder consultar todos los datos de una ciudad hasta que escojamos otra.
 ![pagina 2](https://github.com/user-attachments/assets/a638219b-9f51-46a1-ba56-480acb5a899d)
 ![prevision semanal](https://github.com/user-attachments/assets/14d11fcc-27e3-46ba-a976-45d904837e76)
 En caso de que no encuentre la ciudad nos sladrá un error.
