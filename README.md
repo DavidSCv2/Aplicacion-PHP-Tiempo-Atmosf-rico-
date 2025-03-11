@@ -64,7 +64,7 @@ El documento también maneja errores en caso de que la API no responda o la ciud
 
   ![formulario](https://github.com/user-attachments/assets/f0ce1183-67b5-4847-85d5-f6a3cc6124e3)
   - **Crea un formulario** donde el usuario puede ingresar el nombre de una ciudad.
-  - El formulario usa el método **GET** y envía los datos a `weather.php`.
+  - El formulario usa el método **GET** y envía los datos a `index.php`.
   - Contiene un **campo de texto** (`<input type="text">`) para ingresar la ciudad.
   - Se incluye un botón **"Buscar"** para enviar el formulario.
 
