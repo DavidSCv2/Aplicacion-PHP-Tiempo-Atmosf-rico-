@@ -213,7 +213,8 @@ El proceso de despliegue de la aplicación se realizará en una máquina EC2 (El
 - **Selecciona una AMI (Amazon Machine Image)**: AWS ofrece varias imágenes preconfiguradas. Elige una AMI adecuada para tu aplicación (para este proyecto se ha usado Ubuntu).
 - **Elige un tipo de instancia**: Selecciona el tipo de instancia según los requisitos de tu aplicación (por ejemplo, `t2.micro` para pruebas o una instancia más potente si es necesario).
 - **Configura la clave SSH**: Es importante que crees o selecciones un par de claves SSH para poder acceder a tu instancia de manera remota. Si no tienes uno, selecciona "Create a new key pair", descárgalo y guárdalo de forma segura.
-![instancia 1](https://github.com/user-attachments/assets/90545918-0342-4d47-ae13-285c3f360cd6)
+
+![crear instancia 1](https://github.com/user-attachments/assets/759a01f5-7bba-4999-870b-95b73596cb87)
 ![instancia 2](https://github.com/user-attachments/assets/bb1e508d-f9dd-400c-a290-fee6793292e2)
 
 **2. Configurar Grupos de Seguridad**
